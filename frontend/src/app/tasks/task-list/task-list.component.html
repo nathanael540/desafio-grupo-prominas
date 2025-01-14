@@ -1,0 +1,72 @@
+
+<h1>
+    Lista de Tarefas 
+  
+     <button (click)="createTask()">Criar Tarefa</button>
+   
+</h1>
+
+
+
+<table>
+    <thead>
+        <tr>
+            <th>
+                <h2>Tarefa</h2>
+            </th>
+            <th>
+                <h2>
+                    Status
+                </h2>
+            </th>
+            <th>
+                <h2>
+                    Ações
+                </h2>
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if (tasks.length ==0) {
+            <tr>
+                <td colspan="3">
+                    <h3>Nenhuma tarefa cadastrada ainda.</h3>
+                    <br>
+                    <button (click)="createTask()">
+                        Criar Tarefa
+                    </button>
+                </td>
+            </tr>
+        }
+
+        @for( task of tasks; track task.id ){
+            <tr>
+                <td>
+                    <h3>
+                        {{ task.title }}
+                    </h3>
+                    <p>
+                        {{ task.description }}
+                    </p>
+                </td>
+                <td>
+                    <span [class]="task.completed ? 'completed' : 'uncompleted'">
+                        {{ task.completed ? 'Concluído' : 'Incompleto' }}
+                    </span>
+                    <span [class]="task.isActive ? 'active' : 'disabled'">
+                        {{ task.isActive ? 'Ativo' : 'Inativo' }}
+                    </span>
+                </td>
+                <td>
+                    <button (click)="updateTask(task)">Editar</button>
+                    <button (click)="deleteTask(task)">Excluir</button>
+                </td>
+            </tr>
+        }
+    </tbody>    
+</table>
+
+@if (showTaskForm) {
+    <app-task-form [task]="taskEdit" (savedForm)="onFormSubmit()"></app-task-form>
+}

@@ -1,0 +1,30 @@
+GET http://localhost:4321/tasks
+
+###
+
+POST http://localhost:4321/tasks  HTTP/1.1
+content-type: application/json
+
+{
+  "title": "Task 1",
+  "description": "Description 1",
+  "completed": true,
+  "isActive": false
+}
+
+###
+
+PUT http://localhost:4321/tasks/67869cffce2ca1102c40bf32  HTTP/1.1
+content-type: application/json
+
+{
+  "title": "Task 2",
+  "description": "Description 2",
+  "completed": true,
+  "isActive": true
+}
+
+
+###
+
+DELETE http://localhost:4321/tasks/67869cffce2ca1102c40bf32

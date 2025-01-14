@@ -1,0 +1,33 @@
+<form class="animated fadeIn">
+   <div class="animated bounceInUp">
+    <label for="title">
+        Título da Tarefa
+    </label>
+    <input type="text" name="title" id="title" [(ngModel)]="task.title" required>
+    
+    <label for="description">
+        Descrição da Tarefa
+    </label>
+    <textarea name="description" id="description" [(ngModel)]="task.description" required></textarea>
+    
+    <div class="columns">
+        <div>
+            <label for="completed">
+                Tarefa Concluída
+            </label>
+            <input type="checkbox" name="completed" id="completed" [(ngModel)]="task.completed">
+        </div>
+    
+        <div>
+            <label for="isActive">
+                Tarefa Ativa
+            </label>
+            <input type="checkbox" name="isActive" id="isActive" [(ngModel)]="task.isActive">
+        </div>
+    </div>
+    
+    <button type="submit" (click)="saveTask()">
+        Salvar Tarefa
+    </button>
+   </div>
+</form>
